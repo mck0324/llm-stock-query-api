@@ -16,7 +16,7 @@ class PriceStore:
             reader = csv.DictReader(file)
             rows = []
             for row in reader:
-                row.append({
+                rows.append({
                     "date": row["date"],
                     "market": row["market"],
                     "symbol": row["symbol"],

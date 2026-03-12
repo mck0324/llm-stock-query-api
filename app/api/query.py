@@ -6,12 +6,14 @@ from app.services.price_store import PriceStore
 
 router = APIRouter()
 
-price_store = PriceStore("/app/data/stock_prices.csv")
+price_store = PriceStore("/Users/minchan/ML/stock_llm_api/app/data/stock_prices.csv")
 
 @router.post("/query", response_model=QueryResponse)
 def query_price(request: QueryRequest):
     try:
+        print("request question: ", request.question)
         parsed = parse_question(request.question)
+        print("parsed: ", parsed)
     except ParseError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
